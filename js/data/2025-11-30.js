@@ -25,7 +25,7 @@ dataSet[dataSetVersion].options = [
       { name: "Young Americans", key: "YA" },
       { name: "Station to Station", key: "StS" },
       { name: "Low", key: "Low" },
-      { name: "&#34;Heroes&#34;", key: "Heroes&#34;" },
+      { name: "&#34;Heroes&#34;", key: "Heroes" },
       { name: "Lodger", key: "Lodger" },
       { name: "Scary Monsters", tooltip: "...and Super Creeps", key: "SMaSC" },
       { name: "Let's Dance", key: "Dance" },
