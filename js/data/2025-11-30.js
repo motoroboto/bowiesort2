@@ -89,6 +89,129 @@ dataSet[dataSetVersion].options = [
 
 dataSet[dataSetVersion].songData = [
   {
+    name: "Liza Jane",
+    img: "",
+    opts: {
+      albums: [],
+      bonus: ["PAT"],
+      cover: true,
+    },
+  },
+  {
+    name: "Louie, Louie Go Home",
+    img: "",
+    opts: {
+      albums: [],
+      bonus: ["PAT"],
+      cover: true,
+    },
+  },
+  {
+    name: "Baby Loves That Way",
+    img: "",
+    opts: {
+      albums: [],
+      bonus: ["PAT"],
+    },
+  },
+  {
+    name: "You've Got A Bad Habit of Leaving",
+    img: "",
+    opts: {
+      albums: [],
+      bonus: ["PAT"],
+    },
+  },
+  {
+    name: "I Pity the Fool",
+    img: "",
+    opts: {
+      albums: [],
+      bonus: ["PAT"],
+      cover: true,
+    },
+  },
+  {
+    name: "Can't Help Thinking About Me",
+    img: "",
+    opts: {
+      albums: [],
+      bonus: ["PAT"],
+    },
+  },
+  {
+    name: "And I Say To Myself",
+    img: "",
+    opts: {
+      albums: [],
+      bonus: ["PAT"],
+    },
+  },
+  {
+    name: "Do Anything You Say",
+    img: "",
+    opts: {
+      albums: [],
+      bonus: ["PAT"],
+    },
+  },
+  {
+    name: "Good Morning Girl",
+    img: "",
+    opts: {
+      albums: [],
+      bonus: ["PAT"],
+    },
+  },
+  {
+    name: "I Dig Everyhing",
+    img: "",
+    opts: {
+      albums: [],
+      bonus: ["PAT"],
+    },
+  },
+  {
+    name: "I'm Not Losing Sleep",
+    img: "",
+    opts: {
+      albums: [],
+      bonus: ["PAT"],
+    },
+  },
+  {
+    name: "The London Boys",
+    img: "",
+    opts: {
+      albums: [],
+      bonus: ["PAT"],
+    },
+  },
+  {
+    name: "Did You Ever Have a Dream",
+    img: "",
+    opts: {
+      albums: [],
+      bonus: ["PAT"],
+    },
+  },
+  {
+    name: "The Laughing Gnome",
+    img: "",
+    opts: {
+      albums: [],
+      bonus: ["PAT"],
+    },
+  },
+  {
+    name: "The Gospel According to Tony Day",
+    img: "",
+    opts: {
+      albums: [],
+      bonus: ["PAT"],
+    },
+  },
+  {
     name: "Uncle Arthur",
     img: "db1.jpg",
     opts: {
@@ -273,6 +396,15 @@ dataSet[dataSetVersion].songData = [
     },
   },
   {
+    name: "Conversation Piece",
+    img: "db1.jpg",
+    opts: {
+      albums: ["DB2"],
+      bonus: [],
+      bside: true,
+    },
+  },
+  {
     name: "The Width of A Circle",
     img: "tmwstw.jpg",
     opts: {
@@ -398,6 +530,7 @@ dataSet[dataSetVersion].songData = [
     opts: {
       albums: ["HD"],
       bonus: [],
+      cover: true,
     },
   },
   {
@@ -470,6 +603,7 @@ dataSet[dataSetVersion].songData = [
     opts: {
       albums: ["ZS"],
       bonus: [],
+      cover: true,
     },
   },
   {
@@ -591,6 +725,7 @@ dataSet[dataSetVersion].songData = [
     opts: {
       albums: ["AS"],
       bonus: [],
+      cover: true,
     },
   },
   {
@@ -718,6 +853,26 @@ dataSet[dataSetVersion].songData = [
     },
   },
   {
+    name: "Growin' Up",
+    img: "pinups.jpg",
+    opts: {
+      albums: ["PU"],
+      bonus: [],
+      cover: true,
+      bside: true,
+    },
+  },
+  {
+    name: "Port of Amsterdam",
+    img: "pinups.jpg",
+    opts: {
+      albums: ["PU"],
+      bonus: [],
+      cover: true,
+      bside: true,
+    },
+  },
+  {
     name: "Future Legend",
     img: "dd.jpg",
     opts: {
@@ -807,13 +962,11 @@ dataSet[dataSetVersion].songData = [
     },
   },
   {
-    name: "Growin' Up",
+    name: "Chant of the Ever Circling Skeletal Family",
     img: "dd.jpg",
     opts: {
       albums: ["DD"],
       bonus: [],
-      cover: true,
-      bside: true,
     },
   },
   {
@@ -1110,6 +1263,7 @@ dataSet[dataSetVersion].songData = [
     opts: {
       albums: ["Heroes"],
       bonus: [],
+      instrumental: true,
     },
   },
   {
@@ -1118,6 +1272,7 @@ dataSet[dataSetVersion].songData = [
     opts: {
       albums: ["Heroes"],
       bonus: [],
+      instrumental: true,
     },
   },
   {
@@ -1126,6 +1281,7 @@ dataSet[dataSetVersion].songData = [
     opts: {
       albums: ["Heroes"],
       bonus: [],
+      instrumental: true,
     },
   },
   {
@@ -1134,6 +1290,7 @@ dataSet[dataSetVersion].songData = [
     opts: {
       albums: ["Heroes"],
       bonus: [],
+      instrumental: true,
     },
   },
   {
@@ -1142,6 +1299,15 @@ dataSet[dataSetVersion].songData = [
     opts: {
       albums: ["Heroes"],
       bonus: [],
+    },
+  },
+  {
+    name: "Abdulmajid",
+    img: "heroes.jpg",
+    opts: {
+      albums: ["Heroes"],
+      bonus: [],
+      bside: true,
     },
   },
   {
@@ -1225,6 +1391,15 @@ dataSet[dataSetVersion].songData = [
     },
   },
   {
+    name: "I Pray, Olé",
+    img: "lodger.jpg",
+    opts: {
+      albums: ["Lodger"],
+      bonus: [],
+      bside: true,
+    },
+  },
+  {
     name: "It's No Game (No. 1)",
     img: "smasc.jpg",
     opts: {
@@ -1286,6 +1461,7 @@ dataSet[dataSetVersion].songData = [
     opts: {
       albums: ["SMaSC"],
       bonus: [],
+      cover: true,
     },
   },
   {
@@ -1305,13 +1481,33 @@ dataSet[dataSetVersion].songData = [
     },
   },
   {
+    name: "Crystal Japan",
+    img: "smasc.jpg",
+    opts: {
+      albums: ["SMaSC"],
+      bonus: [],
+      bside: true,
+      instrumental: true,
+    },
+  },
+  {
+    name: "Alabama Song",
+    img: "smasc.jpg",
+    opts: {
+      albums: ["SMaSC"],
+      bonus: [],
+      bside: true,
+      cover: true,
+    },
+  },
+  {
     name: "Baal's Hymn",
     img: "baal.jpg",
     opts: {
       albums: [],
       bonus: ["baal"],
+      cover: true,
     },
-    cover: true,
   },
   {
     name: "Remembering Marie A.",
@@ -1319,8 +1515,8 @@ dataSet[dataSetVersion].songData = [
     opts: {
       albums: [],
       bonus: ["baal"],
+      cover: true,
     },
-    cover: true,
   },
   {
     name: "Ballad of the Adventurers",
@@ -1328,8 +1524,8 @@ dataSet[dataSetVersion].songData = [
     opts: {
       albums: [],
       bonus: ["baal"],
+      cover: true,
     },
-    cover: true,
   },
   {
     name: "The Drowned Girl",
@@ -1337,8 +1533,8 @@ dataSet[dataSetVersion].songData = [
     opts: {
       albums: [],
       bonus: ["baal"],
+      cover: true,
     },
-    cover: true,
   },
   {
     name: "The Dirty Song",
@@ -1346,8 +1542,8 @@ dataSet[dataSetVersion].songData = [
     opts: {
       albums: [],
       bonus: ["baal"],
+      cover: true,
     },
-    cover: true,
   },
   {
     name: "Absolute Beginners",
@@ -1371,8 +1567,8 @@ dataSet[dataSetVersion].songData = [
     opts: {
       albums: [],
       bonus: ["AB"],
+      cover: true,
     },
-    cover: true,
   },
   {
     name: "Modern Love",
@@ -1421,6 +1617,7 @@ dataSet[dataSetVersion].songData = [
     opts: {
       albums: ["Dance"],
       bonus: [],
+      cover: true,
     },
   },
   {
@@ -1453,6 +1650,7 @@ dataSet[dataSetVersion].songData = [
     opts: {
       albums: ["Tonight"],
       bonus: [],
+      cover: true,
     },
   },
   {
@@ -1502,6 +1700,7 @@ dataSet[dataSetVersion].songData = [
     opts: {
       albums: ["Tonight"],
       bonus: [],
+      cover: true,
     },
   },
   {
@@ -1510,6 +1709,15 @@ dataSet[dataSetVersion].songData = [
     opts: {
       albums: ["Tonight"],
       bonus: [],
+    },
+  },
+  {
+    name: "This Is Not America",
+    img: "tonight.jpg",
+    opts: {
+      albums: ["Tonight"],
+      bonus: [],
+      bside: true,
     },
   },
   {
@@ -1718,8 +1926,8 @@ dataSet[dataSetVersion].songData = [
     opts: {
       albums: [],
       bonus: ["TM"],
+      cover: true,
     },
-    cover: true,
   },
   {
     name: "Bus Stop",
@@ -1799,8 +2007,8 @@ dataSet[dataSetVersion].songData = [
     opts: {
       albums: [],
       bonus: ["TMII"],
+      cover: true,
     },
-    cover: true,
   },
   {
     name: "Amlapura",
@@ -1872,8 +2080,8 @@ dataSet[dataSetVersion].songData = [
     opts: {
       albums: [],
       bonus: ["TMII"],
+      instrumental: true,
     },
-    instrumental: true,
   },
   {
     name: "The Wedding",
@@ -1881,6 +2089,7 @@ dataSet[dataSetVersion].songData = [
     opts: {
       albums: ["BTWN"],
       bonus: [],
+      instrumental: true,
     },
   },
   {
@@ -1922,6 +2131,7 @@ dataSet[dataSetVersion].songData = [
     opts: {
       albums: ["BTWN"],
       bonus: [],
+      cover: true,
     },
   },
   {
@@ -1930,6 +2140,7 @@ dataSet[dataSetVersion].songData = [
     opts: {
       albums: ["BTWN"],
       bonus: [],
+      instrumental: true,
     },
   },
   {
@@ -1946,6 +2157,7 @@ dataSet[dataSetVersion].songData = [
     opts: {
       albums: ["BTWN"],
       bonus: [],
+      cover: true,
     },
   },
   {
@@ -1954,6 +2166,7 @@ dataSet[dataSetVersion].songData = [
     opts: {
       albums: ["BTWN"],
       bonus: [],
+      instrumental: true,
     },
   },
   {
@@ -1962,6 +2175,7 @@ dataSet[dataSetVersion].songData = [
     opts: {
       albums: ["BTWN"],
       bonus: [],
+      cover: true,
     },
   },
   {
@@ -1994,6 +2208,7 @@ dataSet[dataSetVersion].songData = [
     opts: {
       albums: ["TBoS"],
       bonus: [],
+      instrumental: true,
     },
   },
   {
@@ -2002,6 +2217,7 @@ dataSet[dataSetVersion].songData = [
     opts: {
       albums: ["TBoS"],
       bonus: [],
+      instrumental: true,
     },
   },
   {
@@ -2042,6 +2258,7 @@ dataSet[dataSetVersion].songData = [
     opts: {
       albums: ["TBoS"],
       bonus: [],
+      instrumental: true,
     },
   },
   {
@@ -2277,7 +2494,25 @@ dataSet[dataSetVersion].songData = [
     },
   },
   {
-    name: "I'm Afraid of Americans (Nine Inch Nails V1 Mix)",
+    name: "I'm Afraid of Americans (NIN V1 Mix)",
+    img: "earthling.jpg",
+    opts: {
+      albums: ["Earthling"],
+      bonus: [],
+      bside: true,
+    },
+  },
+  {
+    name: "Pallas Athena (Tao Jones Index Version)",
+    img: "earthling.jpg",
+    opts: {
+      albums: ["Earthling"],
+      bonus: [],
+      bside: true,
+    },
+  },
+  {
+    name: "V-2 Schneider (Tao Jones Index Version)",
     img: "earthling.jpg",
     opts: {
       albums: ["Earthling"],
@@ -2355,6 +2590,7 @@ dataSet[dataSetVersion].songData = [
     opts: {
       albums: ["hours"],
       bonus: [],
+      instrumental: true,
     },
   },
   {
@@ -2475,6 +2711,7 @@ dataSet[dataSetVersion].songData = [
     opts: {
       albums: ["Heathen"],
       bonus: [],
+      cover: true,
     },
   },
   {
@@ -2507,6 +2744,7 @@ dataSet[dataSetVersion].songData = [
     opts: {
       albums: ["Heathen"],
       bonus: [],
+      cover: true,
     },
   },
   {
@@ -2523,6 +2761,7 @@ dataSet[dataSetVersion].songData = [
     opts: {
       albums: ["Heathen"],
       bonus: [],
+      cover: true,
     },
   },
   {
@@ -2571,6 +2810,7 @@ dataSet[dataSetVersion].songData = [
     opts: {
       albums: ["Reality"],
       bonus: [],
+      cover: true,
     },
   },
   {
@@ -2627,6 +2867,7 @@ dataSet[dataSetVersion].songData = [
     opts: {
       albums: ["Reality"],
       bonus: [],
+      cover: true,
     },
   },
   {
@@ -2643,6 +2884,24 @@ dataSet[dataSetVersion].songData = [
     opts: {
       albums: ["Reality"],
       bonus: [],
+    },
+  },
+  {
+    name: "Fly",
+    img: "reality.jpg",
+    opts: {
+      albums: ["Reality"],
+      bonus: [],
+      bside: true,
+    },
+  },
+  {
+    name: "Queen of all the Tarts (Overture)",
+    img: "reality.jpg",
+    opts: {
+      albums: ["Reality"],
+      bonus: [],
+      bside: true,
     },
   },
   {
@@ -2859,6 +3118,7 @@ dataSet[dataSetVersion].songData = [
     opts: {
       albums: [],
       bonus: ["TNDEE"],
+      instrumental: true,
     },
   },
   {

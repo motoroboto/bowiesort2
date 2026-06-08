@@ -390,6 +390,8 @@ function start() {
     .forEach((el) => (el.style.display = "none"));
   document.querySelector(".loading.button").style.display = "block";
   document.querySelector(".progress").style.display = "block";
+  document.querySelector(".progressbar").style.display = "block";
+
   loading = true;
 
   preloadImages().then(() => {
