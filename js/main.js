@@ -635,9 +635,9 @@ function progressBar(indicator, percentage) {
 /**
  * Shows the result of the sorter.
  *
- * @param {number} [imageNum=3] Number of images to display. Defaults to 3.
+ * @param {number} [imageNum=0] Number of images to display. Defaults to 3.
  */
-function result(imageNum = 3) {
+function result(imageNum = 0) {
   document
     .querySelectorAll(".finished.button")
     .forEach((el) => (el.style.display = "block"));
@@ -652,6 +652,8 @@ function result(imageNum = 3) {
     .forEach((el) => (el.style.display = "none"));
   document.querySelector(".options").style.display = "none";
   document.querySelector(".info").style.display = "none";
+  document.querySelector(".left-footer").style.display = "none";
+  document.querySelector(".right-footer").style.display = "none";
 
   const header =
     '<div class="result head"><div class="left">Order</div><div class="right">Name</div></div>';
