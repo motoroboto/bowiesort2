@@ -90,7 +90,7 @@ dataSet[dataSetVersion].options = [
 dataSet[dataSetVersion].songData = [
   {
     name: "Liza Jane",
-    img: "",
+    img: "lj.jpg",
     opts: {
       albums: [],
       bonus: ["PAT"],
@@ -99,7 +99,7 @@ dataSet[dataSetVersion].songData = [
   },
   {
     name: "Louie, Louie Go Home",
-    img: "",
+    img: "lj.jpg",
     opts: {
       albums: [],
       bonus: ["PAT"],
@@ -108,15 +108,15 @@ dataSet[dataSetVersion].songData = [
   },
   {
     name: "Baby Loves That Way",
-    img: "",
+    img: "bltw.jpg",
     opts: {
       albums: [],
       bonus: ["PAT"],
     },
   },
   {
-    name: "You've Got A Bad Habit of Leaving",
-    img: "",
+    name: "You've Got A Habit of Leaving",
+    img: "ygahol.jpg",
     opts: {
       albums: [],
       bonus: ["PAT"],
@@ -124,7 +124,7 @@ dataSet[dataSetVersion].songData = [
   },
   {
     name: "I Pity the Fool",
-    img: "",
+    img: "iptf.jpg",
     opts: {
       albums: [],
       bonus: ["PAT"],
@@ -133,7 +133,7 @@ dataSet[dataSetVersion].songData = [
   },
   {
     name: "Can't Help Thinking About Me",
-    img: "",
+    img: "chtam.jpg",
     opts: {
       albums: [],
       bonus: ["PAT"],
@@ -141,7 +141,7 @@ dataSet[dataSetVersion].songData = [
   },
   {
     name: "And I Say To Myself",
-    img: "",
+    img: "chtam.jpg",
     opts: {
       albums: [],
       bonus: ["PAT"],
@@ -149,7 +149,7 @@ dataSet[dataSetVersion].songData = [
   },
   {
     name: "Do Anything You Say",
-    img: "",
+    img: "days.jpg",
     opts: {
       albums: [],
       bonus: ["PAT"],
@@ -157,7 +157,7 @@ dataSet[dataSetVersion].songData = [
   },
   {
     name: "Good Morning Girl",
-    img: "",
+    img: "gmg.jpg",
     opts: {
       albums: [],
       bonus: ["PAT"],
@@ -165,7 +165,7 @@ dataSet[dataSetVersion].songData = [
   },
   {
     name: "I Dig Everyhing",
-    img: "",
+    img: "ide.jpg",
     opts: {
       albums: [],
       bonus: ["PAT"],
@@ -173,7 +173,7 @@ dataSet[dataSetVersion].songData = [
   },
   {
     name: "I'm Not Losing Sleep",
-    img: "",
+    img: "inls.jpg",
     opts: {
       albums: [],
       bonus: ["PAT"],
@@ -181,7 +181,7 @@ dataSet[dataSetVersion].songData = [
   },
   {
     name: "The London Boys",
-    img: "",
+    img: "tlb.jpg",
     opts: {
       albums: [],
       bonus: ["PAT"],
@@ -189,7 +189,7 @@ dataSet[dataSetVersion].songData = [
   },
   {
     name: "Did You Ever Have a Dream",
-    img: "",
+    img: "dyehad.jpg",
     opts: {
       albums: [],
       bonus: ["PAT"],
@@ -197,7 +197,7 @@ dataSet[dataSetVersion].songData = [
   },
   {
     name: "The Laughing Gnome",
-    img: "",
+    img: "gnome.jpg",
     opts: {
       albums: [],
       bonus: ["PAT"],
@@ -205,7 +205,7 @@ dataSet[dataSetVersion].songData = [
   },
   {
     name: "The Gospel According to Tony Day",
-    img: "",
+    img: "gnome.jpg",
     opts: {
       albums: [],
       bonus: ["PAT"],
@@ -1713,7 +1713,7 @@ dataSet[dataSetVersion].songData = [
   },
   {
     name: "This Is Not America",
-    img: "tonight.jpg",
+    img: "tina.jpg",
     opts: {
       albums: ["Tonight"],
       bonus: [],
