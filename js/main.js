@@ -28,7 +28,7 @@ let leftIndex = 0;
 let leftInnerIndex = 0;
 let rightIndex = 0;
 let rightInnerIndex = 0;
-let battleNo = 1;
+let matchNo = 1;
 let sortedNo = 0;
 let pointer = 0;
 
@@ -42,25 +42,23 @@ let leftIndexPrev = 0;
 let leftInnerIndexPrev = 0;
 let rightIndexPrev = 0;
 let rightInnerIndexPrev = 0;
-let battleNoPrev = 1;
+let matchNoPrev = 1;
 let sortedNoPrev = 0;
 let pointerPrev = 0;
 
 /** Miscellaneous sorter data that doesn't need to be saved for undo(). */
 let finalCharacters = [];
 let loading = false;
-let totalBattles = 0;
+let totalMatchs = 0;
 let sorterURL = window.location.host + window.location.pathname;
 let storedSaveType = localStorage.getItem(`${sorterURL}_saveType`);
 
 /** Initialize script. */
 function init() {
   /** Define button behavior. */
+  document.getElementById("start-button").addEventListener("click", start);
   document
-    .querySelector(".starting.start.button")
-    .addEventListener("click", start);
-  document
-    .querySelector(".starting.load.button")
+    .getElementById("load-button")
     .addEventListener("click", loadProgress);
 
   document
@@ -77,23 +75,21 @@ function init() {
     .addEventListener("click", () => pick("right"));
 
   document
-    .querySelector(".sorting.tie.button")
+    .getElementById("tie-button")
     .addEventListener("click", () => pick("tie"));
+  document.getElementById("undo-button").addEventListener("click", undo);
   document
-    .querySelector(".sorting.undo.button")
-    .addEventListener("click", undo);
-  document
-    .querySelector(".sorting.save.button")
+    .getElementById("save-button")
     .addEventListener("click", () => saveProgress("Progress"));
 
   document
-    .querySelector(".finished.save.button")
+    .getElementById("result-save")
     .addEventListener("click", () => saveProgress("Last Result"));
   document
-    .querySelector(".finished.getimg.button")
+    .getElementById("result-getImg")
     .addEventListener("click", generateImage);
   document
-    .querySelector(".finished.list.button")
+    .getElementById("result-list")
     .addEventListener("click", generateTextList);
 
   document.querySelector(".clearsave").addEventListener("click", clearProgress);
@@ -101,12 +97,7 @@ function init() {
   /** Define keyboard controls (up/down/left/right vimlike k/j/h/l). */
   document.addEventListener("keypress", (ev) => {
     /** If sorting is in progress. */
-    if (
-      timestamp &&
-      !timeTaken &&
-      !loading &&
-      choices.length === battleNo - 1
-    ) {
+    if (timestamp && !timeTaken && !loading && choices.length === matchNo - 1) {
       switch (ev.key) {
         case "s":
         case "3":
@@ -133,7 +124,7 @@ function init() {
         default:
           break;
       }
-    } else if (timeTaken && choices.length === battleNo - 1) {
+    } else if (timeTaken && choices.length === matchNo - 1) {
       /** If sorting has ended. */
       switch (ev.key) {
         case "k":
@@ -169,9 +160,9 @@ function init() {
     }
   });
 
-  document
-    .querySelector(".image.selector")
-    .insertAdjacentElement("beforeend", document.createElement("select"));
+  // document
+  //   .querySelector(".image.selector")
+  //   .insertAdjacentElement("beforeend", document.createElement("select"));
 
   /** Initialize image quantity selector for results. */
   for (let i = 0; i <= 10; i++) {
@@ -181,28 +172,28 @@ function init() {
     if (i === 3) {
       select.selected = "selected";
     }
-    document
-      .querySelector(".image.selector > select")
-      .insertAdjacentElement("beforeend", select);
+    //   document
+    //     .querySelector(".image.selector > select")
+    //     .insertAdjacentElement("beforeend", select);
   }
 
-  document
-    .querySelector(".image.selector > select")
-    .addEventListener("input", (e) => {
-      const imageNum = e.target.options[e.target.selectedIndex].value;
-      result(Number(imageNum));
-    });
+  // document
+  //   .querySelector(".image.selector > select")
+  //   .addEventListener("input", (e) => {
+  //     const imageNum = e.target.options[e.target.selectedIndex].value;
+  //     result(Number(imageNum));
+  //   });
 
   /** Show load button if save data exists. */
-  if (storedSaveType) {
-    document
-      .querySelector(".starting.load.button > span")
-      .insertAdjacentText("beforeend", storedSaveType);
-    document.querySelectorAll(".starting.button").forEach((el) => {
-      el.style["grid-row"] = "span 3";
-      el.style.display = "block";
-    });
-  }
+  // if (storedSaveType) {
+  //   document
+  //     .querySelector(".starting.load.button > span")
+  //     .insertAdjacentText("beforeend", storedSaveType);
+  // document.querySelectorAll(".starting.button").forEach((el) => {
+  //   el.style["grid-row"] = "span 3";
+  //   el.style.display = "block";
+  // });
+  // }
 
   setLatestDataset();
 
@@ -364,12 +355,12 @@ function start() {
       midpoint = Math.ceil(parent.length / 2);
 
       sortedIndexList[marker] = parent.slice(0, midpoint); // Split the array in half, and put the left half into the marked index.
-      totalBattles += sortedIndexList[marker].length; // The result's length will add to our total number of comparisons.
+      totalMatchs += sortedIndexList[marker].length; // The result's length will add to our total number of comparisons.
       parentIndexList[marker] = i; // Record where it came from.
       marker++; // Increment the marker to put the right half into.
 
       sortedIndexList[marker] = parent.slice(midpoint, parent.length); // Put the right half next to its left half.
-      totalBattles += sortedIndexList[marker].length; // The result's length will add to our total number of comparisons.
+      totalMatchs += sortedIndexList[marker].length; // The result's length will add to our total number of comparisons.
       parentIndexList[marker] = i; // Record where it came from.
       marker++; // Rinse and repeat, until we get arrays of length 1. This is initialization of merge sort.
     }
@@ -385,10 +376,14 @@ function start() {
   document
     .querySelectorAll("input[type=checkbox]")
     .forEach((cb) => (cb.disabled = true));
-  document
-    .querySelectorAll(".starting.button")
-    .forEach((el) => (el.style.display = "none"));
-  document.querySelector(".loading.button").style.display = "block";
+  console.log("start-buttons", document.getElementById(".start-buttons"));
+
+  // document
+  //   .querySelectorAll(".starting.button")
+  //   .forEach((el) => (el.style.display = "none"));
+  // document.querySelector(".loading.button").style.display = "block";
+  document.getElementById("start-buttons").style.display = "none";
+
   document.querySelector(".progress").style.display = "block";
   document.querySelector(".progressbar").style.display = "block";
 
@@ -396,10 +391,11 @@ function start() {
 
   preloadImages().then(() => {
     loading = false;
-    document.querySelector(".loading.button").style.display = "none";
-    document
-      .querySelectorAll(".sorting.button")
-      .forEach((el) => (el.style.display = "block"));
+    // document.querySelector(".loading.button").style.display = "none";
+    // document
+    //   .querySelectorAll(".sorting.button")
+    //   .forEach((el) => (el.style.display = "block"));
+    document.getElementById("sorting-buttons").style.display = "block";
     document
       .querySelectorAll(".sort.text")
       .forEach((el) => (el.style.display = "block"));
@@ -410,15 +406,15 @@ function start() {
       songDataToSort.filter((song) => song === undefined),
     );
     console.log("Before display", songDataToSort.length);
-    document.querySelector(".left-footer").style.display = "block";
-    document.querySelector(".right-footer").style.display = "block";
+    document.querySelector(".card-footer.left").style.display = "block";
+    document.querySelector(".card-footer.right").style.display = "block";
     display();
   });
 }
 
 /** Displays the current state of the sorter. */
 function display() {
-  const percent = Math.floor((sortedNo * 100) / totalBattles);
+  const percent = Math.floor((sortedNo * 100) / totalMatchs);
   const leftCharIndex = sortedIndexList[leftIndex][leftInnerIndex];
   const rightCharIndex = sortedIndexList[rightIndex][rightInnerIndex];
   const leftChar = songDataToSort[leftCharIndex];
@@ -430,7 +426,7 @@ function display() {
     return `${charName}`;
   };
 
-  progressBar(`Battle No. ${battleNo}`, percent);
+  progressBar(`Match No. ${matchNo}`, percent);
 
   document.querySelector(".left.sort.image").src = leftChar.img;
   document.querySelector(".right.sort.image").src = rightChar.img;
@@ -447,8 +443,8 @@ function display() {
   );
 
   /** Autopick if choice has been given. */
-  if (choices.length !== battleNo - 1) {
-    switch (Number(choices[battleNo - 1])) {
+  if (choices.length !== matchNo - 1) {
+    switch (Number(choices[matchNo - 1])) {
       case 0:
         pick("left");
         break;
@@ -472,7 +468,7 @@ function display() {
  * @param {'left'|'right'|'tie'} sortType
  */
 function pick(sortType) {
-  if ((timeTaken && choices.length === battleNo - 1) || loading) {
+  if ((timeTaken && choices.length === matchNo - 1) || loading) {
     return;
   } else if (!timestamp) {
     return start();
@@ -487,7 +483,7 @@ function pick(sortType) {
   leftInnerIndexPrev = leftInnerIndex;
   rightIndexPrev = rightIndex;
   rightInnerIndexPrev = rightInnerIndex;
-  battleNoPrev = battleNo;
+  matchNoPrev = matchNo;
   sortedNoPrev = sortedNo;
   pointerPrev = pointer;
 
@@ -500,7 +496,7 @@ function pick(sortType) {
    */
   switch (sortType) {
     case "left": {
-      if (choices.length === battleNo - 1) {
+      if (choices.length === matchNo - 1) {
         choices += "0";
       }
       recordData("left");
@@ -510,7 +506,7 @@ function pick(sortType) {
       break;
     }
     case "right": {
-      if (choices.length === battleNo - 1) {
+      if (choices.length === matchNo - 1) {
         choices += "1";
       }
       recordData("right");
@@ -528,7 +524,7 @@ function pick(sortType) {
      * as if we picked the 'right' character.
      */
     case "tie": {
-      if (choices.length === battleNo - 1) {
+      if (choices.length === matchNo - 1) {
         choices += "2";
       }
       recordData("left");
@@ -593,11 +589,11 @@ function pick(sortType) {
   if (leftIndex < 0) {
     timeTaken = timeTaken || new Date().getTime() - timestamp;
 
-    progressBar(`Battle No. ${battleNo} - Completed!`, 100);
+    progressBar(`Match No. ${matchNo} - Completed!`, 100);
 
     result();
   } else {
-    battleNo++;
+    matchNo++;
     display();
   }
 }
@@ -627,7 +623,7 @@ function recordData(sortType) {
  * @param {number} percentage
  */
 function progressBar(indicator, percentage) {
-  document.querySelector(".progressbattle").innerHTML = indicator;
+  document.querySelector(".progressmatch").innerHTML = indicator;
   document.querySelector(".progressfill").style.width = `${percentage}%`;
   document.querySelector(".progresstext").innerHTML = `${percentage}%`;
 }
@@ -638,23 +634,28 @@ function progressBar(indicator, percentage) {
  * @param {number} [imageNum=0] Number of images to display. Defaults to 3.
  */
 function result(imageNum = 0) {
-  document
-    .querySelectorAll(".finished.button")
-    .forEach((el) => (el.style.display = "block"));
+  // document
+  //   .querySelectorAll(".finished.button")
+  //   .forEach((el) => (el.style.display = "block"));
+  document.getElementById("result-buttons").style.display = "block";
   // document.querySelector(".image.selector").style.display = "block";
+  document.querySelector(".resultHeader").style.display = "block";
   document.querySelector(".results").style.display = "block";
   document.querySelector(".time.taken").style.display = "block";
 
-  document
-    .querySelectorAll(".sorting.button")
-    .forEach((el) => (el.style.display = "none"));
+  // document
+  //   .querySelectorAll(".sorting.button")
+  //   .forEach((el) => (el.style.display = "none"));
+  document.getElementById("sorting-buttons").style.display = "none";
   document
     .querySelectorAll(".sort.text")
     .forEach((el) => (el.style.display = "none"));
   document.querySelector(".options").style.display = "none";
   document.querySelector(".info").style.display = "none";
-  document.querySelector(".left-footer").style.display = "none";
-  document.querySelector(".right-footer").style.display = "none";
+  document.querySelector(".card-footer.left").style.display = "none";
+  document.querySelector(".card-footer.right").style.display = "none";
+  document.getElementById("sorter").style.display = "none";
+  document.querySelector(".progress").style.display = "none";
 
   const header =
     // '<div class="result head"><div class="left">Order</div><div class="right">Name</div></div>';
@@ -711,7 +712,7 @@ function undo() {
     return;
   }
 
-  choices = battleNo === battleNoPrev ? choices : choices.slice(0, -1);
+  choices = matchNo === matchNoPrev ? choices : choices.slice(0, -1);
 
   sortedIndexList = sortedIndexListPrev.slice(0);
   recordDataList = recordDataListPrev.slice(0);
@@ -722,7 +723,7 @@ function undo() {
   leftInnerIndex = leftInnerIndexPrev;
   rightIndex = rightIndexPrev;
   rightInnerIndex = rightInnerIndexPrev;
-  battleNo = battleNoPrev;
+  matchNo = matchNoPrev;
   sortedNo = sortedNoPrev;
   pointer = pointerPrev;
 
@@ -772,12 +773,12 @@ function clearProgress() {
   localStorage.removeItem(`${sorterURL}_saveData`);
   localStorage.removeItem(`${sorterURL}_saveType`);
 
-  document
-    .querySelectorAll(".starting.start.button")
-    .forEach((el) => (el.style["grid-row"] = "span 6"));
-  document
-    .querySelectorAll(".starting.load.button")
-    .forEach((el) => (el.style.display = "none"));
+  //   document
+  //     .querySelectorAll(".starting.start.button")
+  //     .forEach((el) => (el.style["grid-row"] = "span 6"));
+  //   document
+  //     .querySelectorAll(".starting.load.button")
+  //     .forEach((el) => (el.style.display = "none"));
 }
 
 function generateImage() {
@@ -793,7 +794,7 @@ function generateImage() {
 
   html2canvas(document.querySelector(".results")).then((canvas) => {
     const dataURL = canvas.toDataURL();
-    const imgButton = document.querySelector(".finished.getimg.button");
+    const imgButton = document.getElementById("result-getImg");
     const resetButton = document.createElement("a");
 
     imgButton.removeEventListener("click", generateImage);

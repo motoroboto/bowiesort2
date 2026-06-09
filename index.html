@@ -20,25 +20,25 @@
   <body>
     <div
       class="header navbar navbar-expand-lg shadow-sm fixed-top"
-    ><img src="assets/david-header.png">
+    ><img src="assets/header.png">
     <div class="title"><p class="sorter-title">The Sorter</p><p class="h1 nav-text">David Bowie</p></div>
       
     </div>
 
-    <div class="container center">
+    <div class="main container">
       <div class="progress row">
-        <span class="progressbattle"></span>
+        <span class="progressmatch"></span>
         <div class="progressbar">
           <div class="progressfill"><span class="progresstext"></span></div>
         </div>
       </div>
 
-      <div class="row">
+      <div class="row" id="sorter">
         <div class="col-5">
           <div class="card shadow-sm">
             <div class="row g-0 image-container">
               <img src="assets/defaultL.jpg" class="left sort image" />
-              <div class="card-footer left-footer">
+              <div class="card-footer left">
                 <div class="row g-0 left sort text">
                   <p></p>
                 </div>
@@ -47,13 +47,13 @@
           </div>
         </div>
 
-<div class="col"></div>
+        <div class="col"></div>
 
         <div class="col-5">
           <div class="card shadow-sm">
             <div class="row g-0 image-container">
               <img src="assets/defaultR.jpg" class="right sort image" />
-              <div class="card-footer right-footer">
+              <div class="card-footer right">
                 <div class="row g-0 right sort text style="display: none"">
                   <p></p>
                 </div>
@@ -63,63 +63,57 @@
         </div>
       </div>
 
-      <div class="row">
+      <div class="row" id="start-buttons">
         <div class="btn-group">
-          <button class="starting start button btn btn-danger">
+          <button class="btn btn-danger" id="start-button">
             Click to Start!
           </button>
-          <button class="starting load button btn btn-danger">
+          <button class="btn btn-danger" id="load-button">
             Load <span></span>
           </button>
           </div>
-            <div class="loading button">
-            <div></div>
-            <span>Loading...</span>
-          </div>
       </div>
 
-      <div class="row">
+      <div class="row" id="sorting-buttons">
         <div class="btn-group" role="group">
-          <button class="sorting tie button btn btn-danger">Tie</button>
-          <button class="sorting undo button btn btn-danger">Undo</button>
-          <button class="sorting save button btn btn-danger">
+          <button class="btn btn-danger" id="tie-button">Tie</button>
+          <button class="btn btn-danger" id="undo-button">Undo</button>
+          <button class="btn btn-danger" id="save-button">
             Save Progress
           </button>
         </div>
         </div>
 
-        <div class="row">
+        <div class="row" id="result-buttons">
           <div class="btn-group" role="group">
-          <button class="finished save button btn btn-danger">
+          <button class="btn btn-danger" id="result-save">
             Generate Result URL
           </button>
-          <button class="finished getimg button btn btn-danger">
+          <button class="btn btn-danger" id="result-getImg">
             Generate Image
           </button>
-          <button class="finished list button btn btn-danger">
+          <button class="btn btn-danger" id="result-list">
             Generate Text List
           </button>
         </div>
-        
       </div>
+
       <div class="row">
         <div class="options"></div>
       </div>
-      <div class="image selector">Display Images on Result:</div>
-      <div class="time taken"></div>
-      <div class="results">
-        <table class="table table-sm">
-          <thead class="table-dark">
-            <tr>
-              <th scope="col">#</th>
-              <th scope="col">Song</th>
-            </tr>
-          </thead>
-          <tbody>
+        <div class="resultHeader">
+          <h1>Your David Bowie Song Ranking</h1>
+          <hr>
+          </div>
+          <div class="results">
 
-          </tbody>
-        </table>
-      </div>
+          <table class="table table-sm">
+            <tbody></tbody>
+          </table>
+                  <br/>
+
+          </div>
+      <div class="time taken"></div>
 
       <div class="info">
         <a href="https://relick.me/song/">Song Sorter</a> |
@@ -182,7 +176,6 @@
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
   <script src="js/data.js"></script>
   <script src="js/data/2025-11-30.js"></script>
-
   <script src="js/html2canvas.min.js"></script>
   <script src="js/lz-string.min.js"></script>
   <script src="js/seedrandom.min.js"></script>
