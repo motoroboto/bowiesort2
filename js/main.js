@@ -160,10 +160,6 @@ function init() {
     }
   });
 
-  // document
-  //   .querySelector(".image.selector")
-  //   .insertAdjacentElement("beforeend", document.createElement("select"));
-
   /** Initialize image quantity selector for results. */
   for (let i = 0; i <= 10; i++) {
     const select = document.createElement("option");
@@ -172,17 +168,7 @@ function init() {
     if (i === 3) {
       select.selected = "selected";
     }
-    //   document
-    //     .querySelector(".image.selector > select")
-    //     .insertAdjacentElement("beforeend", select);
   }
-
-  // document
-  //   .querySelector(".image.selector > select")
-  //   .addEventListener("input", (e) => {
-  //     const imageNum = e.target.options[e.target.selectedIndex].value;
-  //     result(Number(imageNum));
-  //   });
 
   /** Show load button if save data exists. */
   // if (storedSaveType) {
@@ -634,18 +620,10 @@ function progressBar(indicator, percentage) {
  * @param {number} [imageNum=0] Number of images to display. Defaults to 3.
  */
 function result(imageNum = 0) {
-  // document
-  //   .querySelectorAll(".finished.button")
-  //   .forEach((el) => (el.style.display = "block"));
   document.getElementById("result-buttons").style.display = "block";
-  // document.querySelector(".image.selector").style.display = "block";
   document.querySelector(".resultHeader").style.display = "block";
   document.querySelector(".results").style.display = "block";
   document.querySelector(".time.taken").style.display = "block";
-
-  // document
-  //   .querySelectorAll(".sorting.button")
-  //   .forEach((el) => (el.style.display = "none"));
   document.getElementById("sorting-buttons").style.display = "none";
   document
     .querySelectorAll(".sort.text")
@@ -769,16 +747,8 @@ function loadProgress() {
  */
 function clearProgress() {
   storedSaveType = "";
-
   localStorage.removeItem(`${sorterURL}_saveData`);
   localStorage.removeItem(`${sorterURL}_saveType`);
-
-  //   document
-  //     .querySelectorAll(".starting.start.button")
-  //     .forEach((el) => (el.style["grid-row"] = "span 6"));
-  //   document
-  //     .querySelectorAll(".starting.load.button")
-  //     .forEach((el) => (el.style.display = "none"));
 }
 
 function generateImage() {

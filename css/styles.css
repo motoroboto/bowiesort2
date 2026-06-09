@@ -2383,9 +2383,10 @@ textarea.form-control-lg {
 }
 
 .btn-check {
-  position: absolute;
+  position: relative;
   clip: rect(0, 0, 0, 0);
   pointer-events: none;
+  display: none;
 }
 .btn-check[disabled] + .btn,
 .btn-check:disabled + .btn {
