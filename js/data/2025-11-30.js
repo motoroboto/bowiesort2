@@ -55,14 +55,13 @@ dataSet[dataSetVersion].options = [
       { name: "Early Pre-Album Tracks", key: "PAT", checked: false },
       { name: "The Gouster", key: "Gouster", checked: false },
       { name: "Baal EP", key: "baal", checked: false },
-      { name: "Absolute Beginners", key: "AB", checked: false },
       { name: "Labyrinth", key: "Labyrinth", checked: false },
       { name: "Tin Machine", key: "TM", checked: false },
       { name: "Tin Machine II", key: "TMII", checked: false },
       { name: "The Leon Suites", key: "Leon", checked: false },
       { name: "The Nomad Soul", key: "Nomad", checked: false },
       { name: "Toy", key: "Toy", checked: false },
-      { name: "Never Let Me Down (2008)", key: "NLMD08", checked: false },
+      { name: "Never Let Me Down (2018)", key: "NLMD18", checked: false },
       { name: "The Next Day Extra EP", key: "TNDEE", checked: false },
     ],
   },
@@ -1546,31 +1545,6 @@ dataSet[dataSetVersion].songData = [
     },
   },
   {
-    name: "Absolute Beginners",
-    img: "ab.jpg",
-    opts: {
-      albums: [],
-      bonus: ["AB"],
-    },
-  },
-  {
-    name: "That's Motivation",
-    img: "ab.jpg",
-    opts: {
-      albums: [],
-      bonus: ["AB"],
-    },
-  },
-  {
-    name: "Volare (Nel Blu Dipinto di Blu)",
-    img: "ab.jpg",
-    opts: {
-      albums: [],
-      bonus: ["AB"],
-      cover: true,
-    },
-  },
-  {
     name: "Modern Love",
     img: "dance.jpg",
     opts: {
@@ -1717,6 +1691,34 @@ dataSet[dataSetVersion].songData = [
     opts: {
       albums: ["Tonight"],
       bonus: [],
+      bside: true,
+    },
+  },
+  {
+    name: "Absolute Beginners",
+    img: "ab.jpg",
+    opts: {
+      albums: ["Tonight"],
+      bonus: [],
+      bside: true,
+    },
+  },
+  {
+    name: "That's Motivation",
+    img: "ab.jpg",
+    opts: {
+      albums: ["Tonight"],
+      bonus: [],
+      bside: true,
+    },
+  },
+  {
+    name: "Volare (Nel Blu Dipinto di Blu)",
+    img: "ab.jpg",
+    opts: {
+      albums: ["Tonight"],
+      bonus: [],
+      cover: true,
       bside: true,
     },
   },
@@ -2906,82 +2908,82 @@ dataSet[dataSetVersion].songData = [
   },
   {
     name: "Day-In Day-Out [2018]",
-    img: "nlmd08.jpg",
+    img: "nlmd18.jpg",
     opts: {
       albums: [],
-      bonus: ["NLMD08"],
+      bonus: ["NLMD18"],
     },
   },
   {
     name: "Time Will Crawl [2018]",
-    img: "nlmd08.jpg",
+    img: "nlmd18.jpg",
     opts: {
       albums: [],
-      bonus: ["NLMD08"],
+      bonus: ["NLMD18"],
     },
   },
   {
     name: "Beat Of Your Drum [2018]",
-    img: "nlmd08.jpg",
+    img: "nlmd18.jpg",
     opts: {
       albums: [],
-      bonus: ["NLMD08"],
+      bonus: ["NLMD18"],
     },
   },
   {
     name: "Never Let Me Down [2018]",
-    img: "nlmd08.jpg",
+    img: "nlmd18.jpg",
     opts: {
       albums: [],
-      bonus: ["NLMD08"],
+      bonus: ["NLMD18"],
     },
   },
   {
     name: "Zeroes [2018]",
-    img: "nlmd08.jpg",
+    img: "nlmd18.jpg",
     opts: {
       albums: [],
-      bonus: ["NLMD08"],
+      bonus: ["NLMD18"],
     },
   },
   {
     name: "Glass Spider [2018]",
-    img: "nlmd08.jpg",
+    img: "nlmd18.jpg",
     opts: {
       albums: [],
-      bonus: ["NLMD08"],
+      bonus: ["NLMD18"],
     },
   },
   {
     name: "Shining Star (Makin' My Love) [2018]",
-    img: "nlmd08.jpg",
+    img: "nlmd18.jpg",
     opts: {
       albums: [],
-      bonus: ["NLMD08"],
+      bonus: ["NLMD18"],
     },
   },
   {
     name: "New York's In Love [2018]",
-    img: "nlmd08.jpg",
+    img: "nlmd18.jpg",
     opts: {
       albums: [],
-      bonus: ["NLMD08"],
+      bonus: ["NLMD18"],
     },
   },
   {
     name: "'87 and Cry [2018]",
-    img: "nlmd08.jpg",
+    img: "nlmd18.jpg",
     opts: {
       albums: [],
-      bonus: ["NLMD08"],
+      bonus: ["NLMD18"],
     },
   },
   {
     name: "Bang Bang [2018]",
-    img: "nlmd08.jpg",
+    img: "nlmd18.jpg",
     opts: {
       albums: [],
-      bonus: ["NLMD08"],
+      bonus: ["NLMD18"],
     },
   },
   {

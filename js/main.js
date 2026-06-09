@@ -1,7 +1,7 @@
 /** @type {SongData} */
-let songData = []; // Initial character data set used.
+let songData = []; // Initial songs data set used.
 /** @type {SongData} */
-let songDataToSort = []; // Character data set after filtering.
+let songDataToSort = []; // Song data set after filtering.
 /** @type {Options} */
 let options = []; // Initial option set used.
 
@@ -47,7 +47,7 @@ let sortedNoPrev = 0;
 let pointerPrev = 0;
 
 /** Miscellaneous sorter data that doesn't need to be saved for undo(). */
-let finalCharacters = [];
+let finalSongs = [];
 let loading = false;
 let totalMatchs = 0;
 let sorterURL = window.location.host + window.location.pathname;
@@ -237,9 +237,9 @@ function start() {
         }, []);
         includeSets.push(
           songDataToSort.filter(
-            (char) =>
-              opt.key in char.opts &&
-              char.opts[opt.key].some((key) => subArray.includes(key)),
+            (song) =>
+              opt.key in song.opts &&
+              song.opts[opt.key].some((key) => subArray.includes(key)),
           ),
         );
       }
@@ -248,14 +248,14 @@ function start() {
         ? optTaken[index].some(Boolean)
         : optTaken[index]
     ) {
-      excludeSets.push((char) => !char.opts[opt.key]);
+      excludeSets.push((song) => !song.opts[opt.key]);
     }
   });
   console.log("includeSets", includeSets);
   if (includeSets.length > 0) {
     // Union of all include filters
     const union = new Set(includeSets.flat());
-    songDataToSort = songDataToSort.filter((char) => union.has(char));
+    songDataToSort = songDataToSort.filter((song) => union.has(song));
   }
 
   console.log("After filter", songDataToSort.length);
@@ -276,7 +276,6 @@ function start() {
     }, optStr);
   optTaken.forEach((val) => {
     if (Array.isArray(val)) {
-      // suboptStr += "|";
       suboptStr += val.reduce((str, val) => {
         str += val ? "1" : "0";
         return str;
@@ -290,7 +289,7 @@ function start() {
     return;
   }
 
-  /** Shuffle character array with timestamp seed. */
+  /** Shuffle song array with timestamp seed. */
   timestamp = timestamp || new Date().getTime();
   if (new Date(timestamp) < new Date(currentVersion)) {
     timeError = true;
@@ -310,7 +309,7 @@ function start() {
 
   console.log("After shuffle", songDataToSort.length);
   /**
-   * tiedDataList will keep a record of indexes on which characters are equal (i.e. tied)
+   * tiedDataList will keep a record of indexes on which songs are equal (i.e. tied)
    * to another one. recordDataList will have an interim list of sorted elements during
    * the mergesort process.
    */
@@ -362,25 +361,18 @@ function start() {
   document
     .querySelectorAll("input[type=checkbox]")
     .forEach((cb) => (cb.disabled = true));
-  console.log("start-buttons", document.getElementById(".start-buttons"));
 
-  // document
-  //   .querySelectorAll(".starting.button")
-  //   .forEach((el) => (el.style.display = "none"));
-  // document.querySelector(".loading.button").style.display = "block";
   document.getElementById("start-buttons").style.display = "none";
-
+  // document.getElementById("the-start-buttons").style.display = "none";
   document.querySelector(".progress").style.display = "block";
   document.querySelector(".progressbar").style.display = "block";
+  document.getElementById("starting-line").style.display = "block";
 
   loading = true;
 
   preloadImages().then(() => {
     loading = false;
-    // document.querySelector(".loading.button").style.display = "none";
-    // document
-    //   .querySelectorAll(".sorting.button")
-    //   .forEach((el) => (el.style.display = "block"));
+    document.getElementById("starting-line").style.display = "none";
     document.getElementById("sorting-buttons").style.display = "block";
     document
       .querySelectorAll(".sort.text")
@@ -401,31 +393,45 @@ function start() {
 /** Displays the current state of the sorter. */
 function display() {
   const percent = Math.floor((sortedNo * 100) / totalMatchs);
-  const leftCharIndex = sortedIndexList[leftIndex][leftInnerIndex];
-  const rightCharIndex = sortedIndexList[rightIndex][rightInnerIndex];
-  const leftChar = songDataToSort[leftCharIndex];
-  const rightChar = songDataToSort[rightCharIndex];
+  const leftSongIndex = sortedIndexList[leftIndex][leftInnerIndex];
+  const rightSongIndex = sortedIndexList[rightIndex][rightInnerIndex];
+  const leftSong = songDataToSort[leftSongIndex];
+  const rightSong = songDataToSort[rightSongIndex];
 
-  const charNameDisp = (name) => {
-    const charName = reduceTextWidth(name, "Arial 12.8px", 220);
-    const charTooltip = name !== charName ? name : "";
-    return `${charName}`;
+  const songNameDisplay = (name) => {
+    const songName = reduceTextWidth(name, "Rubik 12.8px", 500);
+    const songTooltip = name !== songName ? name : "";
+    console.log("song name", songName);
+    console.log("song name length", songName.length);
+    if (songName.length > 40) {
+      return (
+        songName.substring(0, 30) +
+        "..." +
+        songName.substring(songName.length - 5)
+      );
+    }
+
+    return `${songName}`;
   };
+
+  function start_and_end(str) {}
 
   progressBar(`Match No. ${matchNo}`, percent);
 
-  document.querySelector(".left.sort.image").src = leftChar.img;
-  document.querySelector(".right.sort.image").src = rightChar.img;
+  document.querySelector(".left.sort.image").src = leftSong.img;
+  document.querySelector(".right.sort.image").src = rightSong.img;
 
-  document.querySelector(".left.sort.text").innerHTML = charNameDisp(
-    leftChar.name,
+  document.querySelector(".left.sort.text").innerHTML = songNameDisplay(
+    leftSong.name,
   );
-  document.querySelector(".right.sort.text").innerHTML = charNameDisp(
-    rightChar.name,
+  document.querySelector(".right.sort.text").innerHTML = songNameDisplay(
+    rightSong.name,
   );
-  document.querySelector(".left.sort.text").title = charNameDisp(leftChar.name);
-  document.querySelector(".right.sort.text").title = charNameDisp(
-    rightChar.name,
+  document.querySelector(".left.sort.text").title = songNameDisplay(
+    leftSong.name,
+  );
+  document.querySelector(".right.sort.text").title = songNameDisplay(
+    rightSong.name,
   );
 
   /** Autopick if choice has been given. */
@@ -449,7 +455,7 @@ function display() {
 }
 
 /**
- * Sort between two character choices or tie.
+ * Sort between two song choices or tie.
  *
  * @param {'left'|'right'|'tie'} sortType
  */
@@ -476,8 +482,8 @@ function pick(sortType) {
   /**
    * For picking 'left' or 'right':
    *
-   * Input the selected character's index into recordDataList. Increment the pointer of
-   * recordDataList. Then, check if there are any ties with this character, and keep
+   * Input the selected song's index into recordDataList. Increment the pointer of
+   * recordDataList. Then, check if there are any ties with this song, and keep
    * incrementing until we find no more ties.
    */
   switch (sortType) {
@@ -505,9 +511,9 @@ function pick(sortType) {
     /**
      * For picking 'tie' (i.e. heretics):
      *
-     * Proceed as if we picked the 'left' character. Then, we record the right character's
-     * index value into the list of ties (at the left character's index) and then proceed
-     * as if we picked the 'right' character.
+     * Proceed as if we picked the 'left' song. Then, we record the right song's
+     * index value into the list of ties (at the left song's index) and then proceed
+     * as if we picked the 'right' song.
      */
     case "tie": {
       if (choices.length === matchNo - 1) {
@@ -530,8 +536,8 @@ function pick(sortType) {
   }
 
   /**
-   * Once we reach the limit of the 'right' character list, we
-   * insert all of the 'left' characters into the record, or vice versa.
+   * Once we reach the limit of the 'right' song list, we
+   * insert all of the 'left' songs into the record, or vice versa.
    */
   const leftListLen = sortedIndexList[leftIndex].length;
   const rightListLen = sortedIndexList[rightIndex].length;
@@ -547,7 +553,7 @@ function pick(sortType) {
   }
 
   /**
-   * Once we reach the end of both 'left' and 'right' character lists, we can remove
+   * Once we reach the end of both 'left' and 'right' song lists, we can remove
    * the arrays from the initial mergesort array, since they are now recorded. This
    * record is a sorted version of both lists, so we can replace their original
    * (unsorted) parent with a sorted version. Purge the record afterwards.
@@ -587,7 +593,7 @@ function pick(sortType) {
 /**
  * Records data in recordDataList.
  *
- * @param {'left'|'right'} sortType Record from the left or the right character array.
+ * @param {'left'|'right'} sortType Record from the left or the right song array.
  */
 function recordData(sortType) {
   if (sortType === "left") {
@@ -629,28 +635,20 @@ function result(imageNum = 0) {
     .querySelectorAll(".sort.text")
     .forEach((el) => (el.style.display = "none"));
   document.querySelector(".options").style.display = "none";
-  document.querySelector(".info").style.display = "none";
+  document.getElementById("info").style.display = "none";
   document.querySelector(".card-footer.left").style.display = "none";
   document.querySelector(".card-footer.right").style.display = "none";
   document.getElementById("sorter").style.display = "none";
   document.querySelector(".progress").style.display = "none";
 
-  const header =
-    // '<div class="result head"><div class="left">Order</div><div class="right">Name</div></div>';
-    `<table id="resultTable"><thead><tr><th scope="col">#</th><th scope="col">Song</th></tr></thead><tbody>`;
+  const header = `<table id="resultTable"><thead><tr><th scope="col">#</th><th scope="col">Song</th></tr></thead><tbody>`;
   const timeStr = `This sorter was completed on ${new Date(timestamp + timeTaken).toString()} and took ${msToReadableTime(timeTaken)}. <a href="${location.protocol}//${sorterURL}">Do another sorter?</a>`;
-  // const imgRes = (char, num) => {
-  //   const charName = reduceTextWidth(char.name, "Arial 12px", 160);
-  //   const charTooltip = char.name !== charName ? char.name : "";
-  //   return `<div class="result image"><div class="left"><span>${num}</span></div><div class="right"><img src="${char.img}"><div><span title="${charTooltip}">${charName}</span></div></div></div>`;
-  // };
-  const res = (char, num) => {
-    const charName = reduceTextWidth(char.name, "Arial 12px", 160);
-    const charTooltip = char.name !== charName ? char.name : "";
-    // return `<div class="result"><div class="left">${num}</div><div class="right"><span title="${charTooltip}">${charName}</span></div></div>`;
-    return `<tr><th scope="row">${num}</th><td>${charName}</td></tr>`;
+
+  const res = (song, num) => {
+    const songName = reduceTextWidth(song.name, "Verdana 12px", 100);
+    const songTooltip = song.name !== songName ? song.name : "";
+    return `<tr><th scope="row">${num}</th><td>${songName}</td></tr>`;
   };
-  // return `</tbody></table>`;
 
   let rankNum = 1;
   let tiedRankNum = 1;
@@ -663,18 +661,17 @@ function result(imageNum = 0) {
   console.log("the results table", resultTable);
   console.log("the time", timeElem);
 
-  // resultTable.innerHTML = header;
   timeElem.innerHTML = timeStr;
 
   songDataToSort.forEach((val, idx) => {
-    const characterIndex = finalSortedIndexes[idx];
-    const character = songDataToSort[characterIndex];
+    const songIndex = finalSortedIndexes[idx];
+    const indexedSong = songDataToSort[songIndex];
 
-    resultTable.insertAdjacentHTML("beforeend", res(character, rankNum));
-    finalCharacters.push({ rank: rankNum, name: character.name });
+    resultTable.insertAdjacentHTML("beforeend", res(indexedSong, rankNum));
+    finalSongs.push({ rank: rankNum, name: indexedSong.name });
 
     if (idx < songDataToSort.length - 1) {
-      if (tiedDataList[characterIndex] === finalSortedIndexes[idx + 1]) {
+      if (tiedDataList[songIndex] === finalSortedIndexes[idx + 1]) {
         tiedRankNum++; // Indicates how many people are tied at the same rank.
       } else {
         rankNum += tiedRankNum; // Add it to the actual ranking, then reset it.
@@ -785,8 +782,8 @@ function generateImage() {
 }
 
 function generateTextList() {
-  const data = finalCharacters.reduce((str, char) => {
-    str += `${char.rank}. ${char.name}<br>`;
+  const data = finalSongs.reduce((str, song) => {
+    str += `${song.rank}. ${song.name}<br>`;
     return str;
   }, "");
   const oWindow = window.open("", "", "height=640,width=480");
@@ -798,7 +795,7 @@ function generateSavedata() {
   return LZString.compressToEncodedURIComponent(saveData);
 }
 
-/** Retrieve latest character data and options from dataset. */
+/** Retrieve latest song data and options from dataset. */
 function setLatestDataset() {
   /** Set some defaults. */
   timestamp = 0;
@@ -824,12 +821,10 @@ function setLatestDataset() {
 function populateOptions() {
   const optList = document.querySelector(".options");
   const optInsert = (name, id, tooltip, checked = true, disabled = false) => {
-    // return `<div><label title="${tooltip ? tooltip : name}"><input id="cb-${id}" type="checkbox" ${checked ? "checked" : ""} ${disabled ? "disabled" : ""}> ${name}</label></div>`;
     return `<input type="checkbox" ${checked ? "checked" : ""} ${disabled ? "disabled" : ""} class="btn-check" id="cb-${id}" autocomplete="off">
 <label class="btn btn-outline-danger" for="cb-${id}" >${name}</label></input>`;
   };
   const optInsertLarge = (name, id, tooltip, checked = true) => {
-    // return `<div class="large option"><label title="${tooltip ? tooltip : name}"><input id="cbgroup-${id}" type="checkbox" ${checked ? "checked" : ""}> ${name}</label></div>`;
     return `<div class="large option"><input type="checkbox" ${checked ? "checked" : ""} class="btn-check" id="cbgroup-${id}" autocomplete="off">
 <label class="btn btn-outline-info" for="cbgroup-${id}" >${name}</label></input></div>`;
   };
@@ -967,7 +962,7 @@ function decodeQuery(queryString = window.location.search.slice(1)) {
 }
 
 /**
- * Preloads images in the filtered character data and converts to base64 representation.
+ * Preloads images in the filtered song data and converts to base64 representation.
  */
 function preloadImages() {
   const totalLength = songDataToSort.length;
@@ -990,8 +985,8 @@ function preloadImages() {
   };
 
   return Promise.all(
-    songDataToSort.map(async (char, idx) => {
-      songDataToSort[idx].img = await loadImage(imageRoot + char.img);
+    songDataToSort.map(async (song, idx) => {
+      songDataToSort[idx].img = await loadImage(imageRoot + song.img);
     }),
   );
 }

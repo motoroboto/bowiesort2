@@ -18,11 +18,12 @@
   </head>
 
   <body>
-    <div
-      class="header navbar navbar-expand-lg shadow-sm fixed-top"
-    ><img src="assets/header.png">
-    <div class="title"><p class="sorter-title">The Sorter</p><p class="h1 nav-text">David Bowie</p></div>
-      
+    <div class="header navbar navbar-expand-lg shadow-sm fixed-top">
+      <img src="assets/header.png" />
+      <div class="title">
+        <p class="sorter-title">The Sorter</p>
+        <p class="h1 nav-text">David Bowie</p>
+      </div>
     </div>
 
     <div class="main container">
@@ -47,14 +48,20 @@
           </div>
         </div>
 
-        <div class="col"></div>
+        <div class="col">
+          <!-- <div id="the-start-buttons">
+            <button class="btn btn-danger start-button">
+              <img src="/assets/bolt.ico" id="start-icon" />
+            </button>
+          </div> -->
+        </div>
 
         <div class="col-5">
           <div class="card shadow-sm">
             <div class="row g-0 image-container">
               <img src="assets/defaultR.jpg" class="right sort image" />
               <div class="card-footer right">
-                <div class="row g-0 right sort text style="display: none"">
+                <div class="row g-0 right sort text">
                   <p></p>
                 </div>
               </div>
@@ -71,21 +78,23 @@
           <button class="btn btn-danger" id="load-button">
             Load <span></span>
           </button>
-          </div>
+        </div>
+      </div>
+
+      <div class="row" id="starting-line">
+        <hr />
       </div>
 
       <div class="row" id="sorting-buttons">
         <div class="btn-group" role="group">
           <button class="btn btn-danger" id="tie-button">Tie</button>
           <button class="btn btn-danger" id="undo-button">Undo</button>
-          <button class="btn btn-danger" id="save-button">
-            Save Progress
-          </button>
+          <button class="btn btn-danger" id="save-button">Save Progress</button>
         </div>
-        </div>
+      </div>
 
-        <div class="row" id="result-buttons">
-          <div class="btn-group" role="group">
+      <div class="row" id="result-buttons">
+        <div class="btn-group" role="group">
           <button class="btn btn-danger" id="result-save">
             Generate Result URL
           </button>
@@ -101,27 +110,24 @@
       <div class="row">
         <div class="options"></div>
       </div>
-        <div class="resultHeader">
-          <h1>Your David Bowie Song Ranking</h1>
-          <hr>
-          </div>
-          <div class="results">
-
-          <table class="table table-sm">
-            <tbody></tbody>
-          </table>
-                  <br/>
-
-          </div>
+      <div class="resultHeader">
+        <h1>Your David Bowie Song Ranking</h1>
+        <hr />
+      </div>
+      <div class="results">
+        <table class="table table-sm">
+          <tbody></tbody>
+        </table>
+        <br />
+      </div>
       <div class="time taken"></div>
 
-      <div class="info">
+      <div class="row" id="info">
         <a href="https://relick.me/song/">Song Sorter</a> |
         <a href="https://github.com/execfera/charasort/">Source Code</a> | |
         <a class="clearsave">Clear Save Data</a>
 
-        <br /><br />
-
+        <br />
         <p>
           This sorter is for David Bowie songs. Pick your albums, and any
           extended releases you want included. Then hit the Start button.
@@ -136,8 +142,8 @@
           like them equally or don't know them.
         </p>
         <p>
-          Depending on how many sources you pick, you'll get up to 700+ picks,
-          so set aside a good few cups of tea for this.
+          Depending on how many releases you pick, you're likely to have over
+          1000 matches, so set aside a good few cups of tea for this.
         </p>
 
         <br /><br />
@@ -152,16 +158,9 @@
         <br /><br />
 
         <p>
-          Inspired by
-          <a href="http://mainyan.sakura.ne.jp/thsort.html">this site</a>.
-          Thumbnail Art: <a href="http://www.tasofro.net/">alphes</a>,
-          <a href="http://www.pixiv.net/member.php?id=743845">kaoru</a>,
-          <a href="http://www.pixiv.net/member.php?id=4920496">dairi</a>. Splash
-          Art:
-          <a
-            href="http://kahluamilk.la.coocan.jp/illust/2004/056_hyakkiyakou.jpg"
-            >toto nemigi</a
-          >.
+          Sorting Algorithym from
+          <a href="http://mainyan.sakura.ne.jp/thsort.html">this site</a> ||
+          Inspired by The Beatles Sorter || I took it from there.
         </p>
 
         <br /><br />
@@ -169,8 +168,14 @@
         <p>May 27th 2026: Started Project</p>
         <p>June 01st 2026: Updates to dataset to maybe work</p>
         <p>June 07th 2026: Now in open beta for v2.0 of the website</p>
-        <p>June 08th 2026: Save/Load Feature Not Working. Will address. Results table is next to be fixed though</p>
-        <p>June 09th: Fixed the issue where page would scroll when clicking on options</p>
+        <p>
+          June 08th 2026: Save/Load Feature Not Working. Will address. Results
+          table is next to be fixed though
+        </p>
+        <p>
+          June 09th: Fixed the issue where page would scroll when clicking on
+          options
+        </p>
       </div>
     </div>
   </body>
