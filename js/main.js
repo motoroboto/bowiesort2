@@ -641,7 +641,8 @@ function result(imageNum = 0) {
   document
     .querySelectorAll(".finished.button")
     .forEach((el) => (el.style.display = "block"));
-  document.querySelector(".image.selector").style.display = "block";
+  // document.querySelector(".image.selector").style.display = "block";
+  document.querySelector(".results").style.display = "block";
   document.querySelector(".time.taken").style.display = "block";
 
   document
@@ -656,38 +657,41 @@ function result(imageNum = 0) {
   document.querySelector(".right-footer").style.display = "none";
 
   const header =
-    '<div class="result head"><div class="left">Order</div><div class="right">Name</div></div>';
+    // '<div class="result head"><div class="left">Order</div><div class="right">Name</div></div>';
+    `<table id="resultTable"><thead><tr><th scope="col">#</th><th scope="col">Song</th></tr></thead><tbody>`;
   const timeStr = `This sorter was completed on ${new Date(timestamp + timeTaken).toString()} and took ${msToReadableTime(timeTaken)}. <a href="${location.protocol}//${sorterURL}">Do another sorter?</a>`;
-  const imgRes = (char, num) => {
-    const charName = reduceTextWidth(char.name, "Arial 12px", 160);
-    const charTooltip = char.name !== charName ? char.name : "";
-    return `<div class="result image"><div class="left"><span>${num}</span></div><div class="right"><img src="${char.img}"><div><span title="${charTooltip}">${charName}</span></div></div></div>`;
-  };
+  // const imgRes = (char, num) => {
+  //   const charName = reduceTextWidth(char.name, "Arial 12px", 160);
+  //   const charTooltip = char.name !== charName ? char.name : "";
+  //   return `<div class="result image"><div class="left"><span>${num}</span></div><div class="right"><img src="${char.img}"><div><span title="${charTooltip}">${charName}</span></div></div></div>`;
+  // };
   const res = (char, num) => {
     const charName = reduceTextWidth(char.name, "Arial 12px", 160);
     const charTooltip = char.name !== charName ? char.name : "";
-    return `<div class="result"><div class="left">${num}</div><div class="right"><span title="${charTooltip}">${charName}</span></div></div>`;
+    // return `<div class="result"><div class="left">${num}</div><div class="right"><span title="${charTooltip}">${charName}</span></div></div>`;
+    return `<tr><th scope="row">${num}</th><td>${charName}</td></tr>`;
   };
+  // return `</tbody></table>`;
 
   let rankNum = 1;
   let tiedRankNum = 1;
   let imageDisplay = imageNum;
 
   const finalSortedIndexes = sortedIndexList[0].slice(0);
-  const resultTable = document.querySelector(".results");
+  const resultTable = document.querySelector("tbody");
   const timeElem = document.querySelector(".time.taken");
+  console.log("the final sort", finalSortedIndexes);
+  console.log("the results table", resultTable);
+  console.log("the time", timeElem);
 
-  resultTable.innerHTML = header;
+  // resultTable.innerHTML = header;
   timeElem.innerHTML = timeStr;
 
   songDataToSort.forEach((val, idx) => {
     const characterIndex = finalSortedIndexes[idx];
     const character = songDataToSort[characterIndex];
-    if (imageDisplay-- > 0) {
-      resultTable.insertAdjacentHTML("beforeend", imgRes(character, rankNum));
-    } else {
-      resultTable.insertAdjacentHTML("beforeend", res(character, rankNum));
-    }
+
+    resultTable.insertAdjacentHTML("beforeend", res(character, rankNum));
     finalCharacters.push({ rank: rankNum, name: character.name });
 
     if (idx < songDataToSort.length - 1) {
