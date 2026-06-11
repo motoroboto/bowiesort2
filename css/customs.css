@@ -231,7 +231,6 @@
   background-color: #6effec;
   border-radius: 50%;
   display: inline-block;
-  /* float: right; */
   margin-top: -0.5em;
   margin-left: auto;
   margin-right: -0.5em;
@@ -247,6 +246,13 @@
   height: 100%;
   border-radius: 0.25em;
   object-fit: contain;
+  user-drag: none;
+  user-select: none;
+  -moz-user-select: none;
+  -webkit-user-drag: none;
+  -webkit-user-select: none;
+  -ms-user-select: none;
+  touch-action: manipulation;
 }
 
 .options {
