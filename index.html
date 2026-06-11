@@ -18,11 +18,41 @@
   </head>
 
   <body>
-    <div class="header navbar navbar-expand-lg shadow-sm fixed-top">
+    <div class="header navbar navbar-expand-lg shadow-sm fixed-top" id="header">
       <img src="assets/header.png" />
       <div class="title">
         <p class="sorter-title">The Sorter</p>
-        <p class="h1 nav-text">David Bowie</p>
+        <p class="h1 nav-text" id="artist-name"></p>
+      </div>
+      <div class="nav-buttons">
+        <button
+          type="button"
+          class="btn btn-outline-secondary nav-button"
+          id="light-mode"
+          onclick="darkMode()"
+        >
+          <img src="assets/icons/light.svg" alt="light/dark mode" />
+        </button>
+        <div class="dropdown">
+          <button
+            type="button"
+            class="btn btn-outline-secondary nav-button dropdown-toggle"
+            id="other-artists"
+            data-bs-toggle="dropdown"
+            aria-expanded="false"
+            tooltip="Other Artists"
+          >
+            <img src="assets/icons/artist-list.svg" alt="artists" />
+          </button>
+          <div
+            class="dropdown-menu dropdown-menu-end"
+            aria-labelledby="other-artists"
+          >
+            <a class="dropdown-item" href="#">Bruce Springsteen</a>
+            <a class="dropdown-item" href="#">Kate Bush</a>
+            <a class="dropdown-item" href="#">Steely Dan</a>
+          </div>
+        </div>
       </div>
     </div>
 
@@ -43,6 +73,8 @@
                 <div class="row g-0 left sort text">
                   <p></p>
                 </div>
+                <span class="left cover-dot"></span>
+                <span class="left instrumental-dot"></span>
               </div>
             </div>
           </div>
@@ -64,6 +96,8 @@
                 <div class="row g-0 right sort text">
                   <p></p>
                 </div>
+                <span class="right cover-dot"></span>
+                <span class="right instrumental-dot"></span>
               </div>
             </div>
           </div>
@@ -129,8 +163,8 @@
 
         <br />
         <p>
-          This sorter is for David Bowie songs. Pick your albums, and any
-          extended releases you want included. Then hit the Start button.
+          Pick your albums, and any extended releases you want included. Then
+          hit the Start button.
         </p>
         <p>
           <strong
@@ -159,8 +193,10 @@
 
         <p>
           Sorting Algorithym from
-          <a href="http://mainyan.sakura.ne.jp/thsort.html">this site</a> ||
-          Inspired by The Beatles Sorter || I took it from there.
+          <a href="https://github.com/execfera/charasort/">here</a> || Inspired
+          after seeing
+          <a href="https://sorter.neocities.org/beatles/">The Beatles Sorter</a>
+          || I took it from there.
         </p>
 
         <br /><br />
@@ -176,6 +212,7 @@
           June 09th: Fixed the issue where page would scroll when clicking on
           options
         </p>
+        <p>June 11th: Added Dark Mode Support</p>
       </div>
     </div>
   </body>
@@ -187,4 +224,6 @@
   <script src="js/seedrandom.min.js"></script>
   <script src="js/main.js"></script>
   <script src="js/getFontSize.js"></script>
+  <script src="js/artist.js"></script>
+  <script src="js/darkmode.js"></script>
 </html>

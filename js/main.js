@@ -375,6 +375,9 @@ function start() {
     document.getElementById("starting-line").style.display = "none";
     document.getElementById("sorting-buttons").style.display = "block";
     document
+      .querySelectorAll(".sort.image")
+      .forEach((el) => (el.style.borderRadius = ".25em .25em 0 0"));
+    document
       .querySelectorAll(".sort.text")
       .forEach((el) => (el.style.display = "block"));
 
@@ -396,13 +399,16 @@ function display() {
   const leftSongIndex = sortedIndexList[leftIndex][leftInnerIndex];
   const rightSongIndex = sortedIndexList[rightIndex][rightInnerIndex];
   const leftSong = songDataToSort[leftSongIndex];
+  console.log("Song Object:", leftSong);
+  console.log("Is this an instrumental:", leftSong.opts.instrumental);
+  console.log("Is this an cover:", leftSong.opts.cover);
+  console.log("Is this an bside:", leftSong.opts.bside);
+
   const rightSong = songDataToSort[rightSongIndex];
 
   const songNameDisplay = (name) => {
     const songName = reduceTextWidth(name, "Rubik 12.8px", 500);
     const songTooltip = name !== songName ? name : "";
-    console.log("song name", songName);
-    console.log("song name length", songName.length);
     if (songName.length > 40) {
       return (
         songName.substring(0, 30) +
@@ -433,6 +439,29 @@ function display() {
   document.querySelector(".right.sort.text").title = songNameDisplay(
     rightSong.name,
   );
+
+  if (leftSong.opts.cover) {
+    document.querySelector(".left.cover-dot").style.display = "inline-block";
+  } else {
+    document.querySelector(".left.cover-dot").style.display = "none";
+  }
+  if (leftSong.opts.instrumental) {
+    document.querySelector(".left.instrumental-dot").style.display =
+      "inline-block";
+  } else {
+    document.querySelector(".left.instrumental-dot").style.display = "none";
+  }
+  if (rightSong.opts.cover) {
+    document.querySelector(".right.cover-dot").style.display = "inline-block";
+  } else {
+    document.querySelector(".right.cover-dot").style.display = "none";
+  }
+  if (rightSong.opts.instrumental) {
+    document.querySelector(".right.instrumental-dot").style.display =
+      "inline-block";
+  } else {
+    document.querySelector(".right.instrumental-dot").style.display = "none";
+  }
 
   /** Autopick if choice has been given. */
   if (choices.length !== matchNo - 1) {
