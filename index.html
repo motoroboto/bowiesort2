@@ -28,10 +28,13 @@
         <button
           type="button"
           class="btn btn-outline-secondary nav-button"
-          id="light-mode"
           onclick="darkMode()"
         >
-          <img src="assets/icons/light.svg" alt="light/dark mode" />
+          <img
+            src="assets/icons/light.svg"
+            alt="light/dark mode"
+            id="light-icon"
+          />
         </button>
         <div class="dropdown">
           <button
@@ -73,8 +76,10 @@
                 <div class="row g-0 left sort text">
                   <p></p>
                 </div>
-                <span class="left cover-dot"></span>
-                <span class="left instrumental-dot"></span>
+                <div class="dots left">
+                  <span class="left cover-dot"></span>
+                  <span class="left instrumental-dot"></span>
+                </div>
               </div>
             </div>
           </div>
@@ -96,8 +101,10 @@
                 <div class="row g-0 right sort text">
                   <p></p>
                 </div>
-                <span class="right cover-dot"></span>
-                <span class="right instrumental-dot"></span>
+                <div class="dots right">
+                  <span class="right cover-dot"></span>
+                  <span class="right instrumental-dot"></span>
+                </div>
               </div>
             </div>
           </div>

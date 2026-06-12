@@ -9,7 +9,7 @@ dataSet[dataSetVersion].options = [
     tooltip: "Check this to restrict to certain albums.",
     checked: true,
     sub: [
-      { name: "David Bowie (1967)", key: "DB1" },
+      { name: "David Bowie (1967)", key: "DB1", checked: true },
       { name: "David Bowie (1969)", tooltip: "aka Space Oddity", key: "DB2" },
       { name: "The Man Who Sold the World", key: "TMWStW" },
       { name: "Hunky Dory", key: "HD" },

@@ -62,6 +62,10 @@
   display: none;
 }
 
+.light-icon {
+  transition: background 0.2s linear;
+}
+
 .progressbar {
   position: relative;
   width: 100%;
@@ -193,6 +197,14 @@
   font-size: 8vw;
 }
 
+.dots.left {
+  text-align: left;
+}
+
+.dots.right {
+  text-align: right;
+}
+
 .left.cover-dot {
   height: 0.5em;
   width: 0.5em;
@@ -200,7 +212,7 @@
   border-radius: 50%;
   display: inline-block;
   position: absolute;
-  margin-top: -0.5vw;
+  margin-top: -0.2vw;
   margin-left: -0.5vw;
 }
 
@@ -211,7 +223,7 @@
   border-radius: 50%;
   display: inline-block;
   position: absolute;
-  margin-top: -0.5vw;
+  margin-top: -0.22vw;
 }
 
 .right.cover-dot {
@@ -221,8 +233,8 @@
   border-radius: 50%;
   position: absolute;
   display: inline-block;
-  margin-top: -0.5vw;
-  margin-left: auto;
+  margin-top: -0.2vw;
+  margin-right: -0.5vw;
 }
 
 .right.instrumental-dot {
@@ -231,8 +243,7 @@
   background-color: #6effec;
   border-radius: 50%;
   display: inline-block;
-  margin-top: -0.5em;
-  margin-left: auto;
+  margin-top: -0.2em;
   margin-right: -0.5em;
 }
 
